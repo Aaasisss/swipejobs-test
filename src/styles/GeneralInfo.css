@@ -1,0 +1,34 @@
+.generalInfo-main-container {
+  padding: 10px 25px;
+}
+
+.generalInfo-container {
+  display: flex;
+  gap: 2rem;
+  font-size: 1.5rem;
+}
+
+.icon-container {
+  font-size: 2.5rem;
+  display: grid;
+  place-items: center;
+}
+
+.generalInfo-heading {
+  font-weight: bold;
+}
+
+.generalInfo-right-container {
+  flex-grow: 1;
+  max-height: 400px;
+  scroll-behavior: smooth;
+  overflow-y: hidden;
+  /* overflow-y: scroll; */
+}
+
+.shiftDates-text,
+.location-text,
+.requirements-text,
+.generalInfo-text {
+  font-size: 1.2rem;
+}

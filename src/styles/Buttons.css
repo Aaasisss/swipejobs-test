@@ -1,0 +1,21 @@
+.button-container {
+  display: flex;
+  gap: 1rem;
+  padding: 15px;
+}
+
+.button-reject {
+  background-color: white;
+  color: black;
+  border: 1px solid !important;
+  opacity: 0.7;
+  flex-grow: 1;
+  padding: 30px 0;
+}
+
+.button-accept {
+  background-color: black;
+  color: white;
+  flex-grow: 1;
+  padding: 30px;
+}

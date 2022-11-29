@@ -1,0 +1,25 @@
+.info-container {
+  padding: 10px 25px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #38d0ab;
+  line-height: 1.2;
+}
+
+.title {
+  font-weight: bold;
+  margin: 0;
+}
+
+.data {
+  font-size: 3rem;
+  color: white;
+  font-weight: bold;
+  margin: 0 !important;
+}
+
+.dollarSign {
+  font-size: 1.5rem;
+  position: relative;
+  bottom: 1rem;
+}
