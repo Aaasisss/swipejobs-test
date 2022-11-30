@@ -1,6 +1,7 @@
-import { JobProps } from "./shared/types";
+import { JobProps } from "./shared/JobPropTypes";
+import { WorkerProps } from "./shared/WorkerPropTypes";
 
-export const data: JobProps = {
+export const jobData: JobProps = {
   jobId: "5775d8e18a488e6c5bb08c13",
   jobTitle: {
     name: "Driver",
@@ -64,4 +65,17 @@ export const data: JobProps = {
   branch: "Chicago",
   branchPhoneNumber: "2531233311",
   requirements: ["Safety Vest", "Hart Hat"],
+};
+
+export const workerData: WorkerProps = {
+  address: {
+    formattedAddress: "1 Downing St, Chicago, IL 60654, USA",
+    zoneId: "America/Chicago",
+  },
+  email: "jim.rose@gmail.com",
+  firstName: "Jim",
+  lastName: "Rose",
+  maxJobDistance: 20,
+  phoneNumber: "5096290220",
+  workerId: "7f90df6e-b832-44e2-b624-3143d428001f",
 };
