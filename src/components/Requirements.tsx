@@ -19,13 +19,14 @@ const Requirements: React.FC<Props> = ({ requirements }) => {
           <Stack>
             <Text className="generalInfo-heading">Requirements</Text>
             <Stack>
-              {requirements.map((requirement, index) => {
-                return (
-                  <Text key={index} className="requirements-text">
-                    {requirement}
-                  </Text>
-                );
-              })}
+              {requirements &&
+                requirements.map((requirement, index) => {
+                  return (
+                    <Text key={index} className="requirements-text">
+                      - {requirement}
+                    </Text>
+                  );
+                })}
             </Stack>
           </Stack>
         </div>

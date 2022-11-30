@@ -2,7 +2,7 @@ import React from "react";
 import { Stack, Text } from "@chakra-ui/react";
 import "../styles/GeneralInfo.css";
 import { CgProfile } from "react-icons/cg";
-import { ReportToProps } from "../shared/types";
+import { ReportToProps } from "../shared/JobPropTypes";
 
 const ReportTo: React.FC<ReportToProps> = ({ name, phone }) => {
   return (
