@@ -22,12 +22,11 @@
 
 .container {
   margin: 20px;
-  border: 1px solid red;
-  background-color: #c9c9c9;
+  background-color: #d9dbd7;
 }
 
 .body {
-  padding: 15px;
+  padding: 20px;
 }
 
 .body .inner-container {
@@ -38,7 +37,7 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 3s linear;
+    animation: App-logo-spin infinite 2s steps(2, end);
   }
 }
 
