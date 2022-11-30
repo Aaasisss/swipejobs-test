@@ -6,7 +6,7 @@ interface Props {
 
 const Image: React.FC<Props> = ({ imageUrl }) => {
   return (
-    <Box sx={{ width: "100%", height: "300px", overflow: "hidden" }}>
+    <Box sx={{ width: "100%", height: "200px", overflow: "hidden" }}>
       <ChakraImage
         src={imageUrl}
         sx={{

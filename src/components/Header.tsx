@@ -3,8 +3,9 @@ import logo from "../images/swipejobs-logo.svg";
 import logoIcon from "../images/swipejobs-logo-icon.svg";
 import { Image, Text } from "@chakra-ui/react";
 import React from "react";
+import { WorkerProps } from "../shared/WorkerPropTypes";
 
-const Header: React.FC = () => {
+const Header: React.FC<WorkerProps> = ({ firstName, lastName }) => {
   return (
     <div className="header">
       <div style={{ display: "flex", gap: "10px" }}>
@@ -18,7 +19,7 @@ const Header: React.FC = () => {
         <Image height={"100px"} width={"200px"} src={logo} alt="logo" />
       </div>
       <div className="header-text">
-        <Text>Jim Ross</Text>
+        <Text>{`${firstName} ${lastName}`}</Text>
       </div>
     </div>
   );

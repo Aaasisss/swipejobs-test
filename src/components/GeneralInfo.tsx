@@ -5,7 +5,7 @@ import Location from "./Location";
 import Requirements from "./Requirements";
 import ReportTo from "./ReportTo";
 import React from "react";
-import { ReportToProps, ShiftsProps } from "../shared/types";
+import { ReportToProps, ShiftsProps } from "../shared/JobPropTypes";
 
 interface Props {
   formattedAddress: string;
