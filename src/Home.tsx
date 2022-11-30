@@ -6,40 +6,46 @@ import Buttons from "./components/Buttons";
 import Image from "./components/Image";
 import Header from "./components/Header";
 import React from "react";
-import { JobProps } from "./shared/types";
+import { JobProps } from "./shared/JobPropTypes";
 import { Box } from "@chakra-ui/react";
+import { WorkerProps } from "./shared/WorkerPropTypes";
+import { workerData } from "./demoData";
 
-const Home: React.FC<JobProps> = ({
-  jobTitle,
-  company,
-  milesToTravel,
-  wagePerHourInCents,
-  requirements,
-  shifts,
-}) => {
+interface Props {
+  jobDetails: JobProps;
+  workerDetails: WorkerProps;
+}
+
+const Home: React.FC<Props> = ({ jobDetails, workerDetails }) => {
   return (
     <div className="App">
       <Box
         className="container"
-        width={{ base: "100%", md: "700px", lg: "700px" }}
+        width={{ base: "100%", md: "600px", lg: "600px" }}
       >
-        <Header />
+        <Header {...workerData} />
         <div className="body">
           <div className="inner-container">
-            <Image imageUrl={jobTitle.imageUrl} />
-            <JobTitle jobTitle={jobTitle.name} companyName={company.name} />
+            <Image imageUrl={jobDetails.jobTitle.imageUrl} />
+            <JobTitle
+              jobTitle={jobDetails.jobTitle.name}
+              companyName={jobDetails.company.name}
+            />
             <Info
-              milesToTravel={milesToTravel}
-              wagePerHourInCents={wagePerHourInCents}
+              milesToTravel={jobDetails.milesToTravel}
+              wagePerHourInCents={jobDetails.wagePerHourInCents}
             />
             <GeneralInfo
-              milesToTravel={milesToTravel}
-              formattedAddress={company.address.formattedAddress}
-              reportTo={company.reportTo}
-              requirements={requirements}
-              shifts={shifts}
+              milesToTravel={jobDetails.milesToTravel}
+              formattedAddress={jobDetails.company.address.formattedAddress}
+              reportTo={jobDetails.company.reportTo}
+              requirements={jobDetails.requirements}
+              shifts={jobDetails.shifts}
             />
-            <Buttons />
+            <Buttons
+              workerId={workerDetails.workerId}
+              JobId={jobDetails.jobId}
+            />
           </div>
         </div>
       </Box>
