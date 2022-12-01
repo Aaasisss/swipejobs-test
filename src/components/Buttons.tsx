@@ -13,9 +13,9 @@ const Buttons: React.FC<Props> = ({ workerId, JobId }) => {
 
   const onRejectClickHandle = () => {
     fetch(
-      `https://test.swipejobs.com/api/worker/${workerId}/job/${JobId}/accept`
+      `https://test.swipejobs.com/api/worker/${workerId}/job/${JobId}/reject`
     )
-      .then(async (res) => {
+      .then((res) => {
         setJobRejected(true);
         setJobAccepted(false);
       })
@@ -26,9 +26,9 @@ const Buttons: React.FC<Props> = ({ workerId, JobId }) => {
 
   const onAcceptClickHandle = () => {
     fetch(
-      `https://test.swipejobs.com/api/worker/${workerId}/job/${JobId}/reject`
+      `https://test.swipejobs.com/api/worker/${workerId}/job/${JobId}/accept`
     )
-      .then(async (res) => {
+      .then((res) => {
         setJobAccepted(true);
         setJobRejected(false);
       })
