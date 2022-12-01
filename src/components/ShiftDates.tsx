@@ -2,8 +2,11 @@ import { Stack, Text } from "@chakra-ui/react";
 import React from "react";
 import { SlCalender } from "react-icons/sl";
 import { ShiftsProps } from "../shared/JobPropTypes";
-import dayjs from "dayjs";
 import "../styles/GeneralInfo.css";
+import {
+  convert_shift_end_date,
+  convert_shift_start_date,
+} from "../utils/ConvertDates";
 
 interface Props {
   shifts: ShiftsProps[];
@@ -21,11 +24,8 @@ const ShiftDates: React.FC<Props> = ({ shifts }) => {
 
           {shifts.map((shift, index) => {
             //format dates
-            const start_date = dayjs(shift.startDate)
-              .format("MMM D, ddd, h:mm a")
-              .toUpperCase();
-
-            const end_date = dayjs(shift.endDate).format("h:mm A Z");
+            const start_date = convert_shift_start_date(shift.startDate);
+            const end_date = convert_shift_end_date(shift.endDate);
 
             return (
               <Stack key={index}>
