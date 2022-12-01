@@ -5,17 +5,21 @@ import "../styles/Home.css";
 import Buttons from "../components/Buttons";
 import Image from "../components/Image";
 import Header from "../components/Header";
-import React from "react";
+import React, { useState } from "react";
 import { JobProps } from "../shared/JobPropTypes";
 import { Box } from "@chakra-ui/react";
 import { WorkerProps } from "../shared/WorkerPropTypes";
 
 interface Props {
-  jobDetails: JobProps;
+  jobs: JobProps[];
   workerDetails: WorkerProps;
 }
 
-const Home: React.FC<Props> = ({ jobDetails, workerDetails }) => {
+const Home: React.FC<Props> = ({ jobs, workerDetails }) => {
+  const totalJobs = jobs.length;
+  const [currentJobIndex, setCurrentJobIndex] = useState<number>(0);
+  const jobDetails = jobs[currentJobIndex];
+
   return (
     <div className="App">
       <Box
@@ -44,6 +48,9 @@ const Home: React.FC<Props> = ({ jobDetails, workerDetails }) => {
             <Buttons
               workerId={workerDetails.workerId}
               JobId={jobDetails.jobId}
+              currentJobIndex={currentJobIndex}
+              setCurrentJobIndex={setCurrentJobIndex}
+              totalJobs={totalJobs}
             />
           </div>
         </div>
