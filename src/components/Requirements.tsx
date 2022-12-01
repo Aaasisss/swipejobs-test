@@ -18,16 +18,16 @@ const Requirements: React.FC<Props> = ({ requirements }) => {
         <div className="generalInfo-right-container">
           <Stack>
             <Text className="generalInfo-heading">Requirements</Text>
-            <Stack>
+            <ul>
               {requirements &&
                 requirements.map((requirement, index) => {
                   return (
-                    <Text key={index} className="requirements-text">
+                    <li key={index} className="requirements-text">
                       - {requirement}
-                    </Text>
+                    </li>
                   );
                 })}
-            </Stack>
+            </ul>
           </Stack>
         </div>
       </div>
