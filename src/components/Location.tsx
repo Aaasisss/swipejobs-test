@@ -1,5 +1,5 @@
 import React from "react";
-import { Stack, Text } from "@chakra-ui/react";
+import { Stack, Text, Tooltip } from "@chakra-ui/react";
 import "../styles/GeneralInfo.css";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { BsChevronRight } from "react-icons/bs";
@@ -26,9 +26,14 @@ const Location: React.FC<Props> = ({ formattedAddress, milesToTravel }) => {
             </Text>
           </Stack>
         </div>
-        <div className="icon-container">
-          <BsChevronRight />
-        </div>
+        <Tooltip label="View on maps">
+          <a
+            className="icon-container"
+            href={`https://www.google.com.au/maps/place/${formattedAddress}`}
+          >
+            <BsChevronRight />
+          </a>
+        </Tooltip>
       </div>
       <hr />
     </>
