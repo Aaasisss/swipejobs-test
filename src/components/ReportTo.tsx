@@ -3,8 +3,11 @@ import { Stack, Text } from "@chakra-ui/react";
 import "../styles/GeneralInfo.css";
 import { CgProfile } from "react-icons/cg";
 import { ReportToProps } from "../shared/JobPropTypes";
+import { formatPhoneNumber } from "../utils/FormatPhoneNumber";
 
 const ReportTo: React.FC<ReportToProps> = ({ name, phone }) => {
+  const formattedPhone = formatPhoneNumber(phone);
+
   return (
     <>
       <div className="generalInfo-container">
@@ -16,7 +19,7 @@ const ReportTo: React.FC<ReportToProps> = ({ name, phone }) => {
           <Stack>
             <Text className="generalInfo-heading">Report To</Text>
             <Text className="generalInfo-text">
-              {name} {phone}
+              {name} {formattedPhone}
             </Text>
           </Stack>
         </div>
