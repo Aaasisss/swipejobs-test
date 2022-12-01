@@ -1,40 +1,48 @@
 import { Button } from "@chakra-ui/react";
 import React, { useState } from "react";
 import "../styles/Buttons.css";
+import { acceptJob, rejectJob } from "../utils/ButtonClickResponses";
 
 interface Props {
   workerId: string;
   JobId: string;
+  currentJobIndex: number;
+  setCurrentJobIndex: React.Dispatch<React.SetStateAction<number>>;
+  totalJobs: number;
 }
 
-const Buttons: React.FC<Props> = ({ workerId, JobId }) => {
+const Buttons: React.FC<Props> = ({
+  workerId,
+  JobId,
+  currentJobIndex,
+  setCurrentJobIndex,
+  totalJobs,
+}) => {
   const [jobAccepted, setJobAccepted] = useState(false);
   const [jobRejected, setJobRejected] = useState(false);
+  const [jobAvailable, setJobAvailable] = useState("I'll take it");
 
-  const onRejectClickHandle = () => {
-    fetch(
-      `https://test.swipejobs.com/api/worker/${workerId}/job/${JobId}/reject`
-    )
-      .then((res) => {
-        setJobRejected(true);
-        setJobAccepted(false);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+  const onAcceptClickHandle = async () => {
+    const response = await acceptJob(workerId, JobId);
+
+    if (response.success) {
+      setJobAccepted(true);
+      setJobRejected(false);
+    } else {
+      setJobAvailable("Not Available");
+    }
   };
 
-  const onAcceptClickHandle = () => {
-    fetch(
-      `https://test.swipejobs.com/api/worker/${workerId}/job/${JobId}/accept`
-    )
-      .then((res) => {
-        setJobAccepted(true);
-        setJobRejected(false);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+  const onRejectClickHandle = async () => {
+    const nextIndex = currentJobIndex + 1;
+    if (nextIndex < totalJobs) {
+      setCurrentJobIndex(nextIndex);
+    }
+
+    await rejectJob(workerId, JobId).then(() => {
+      setJobAccepted(false);
+      setJobRejected(true);
+    });
   };
 
   return (
@@ -52,7 +60,7 @@ const Buttons: React.FC<Props> = ({ workerId, JobId }) => {
         sx={{ backgroundColor: jobAccepted && "#52b818" }}
         onClick={onAcceptClickHandle}
       >
-        {jobAccepted ? "You took this job" : "I'll Take it"}
+        {jobAccepted ? "You took this job" : jobAvailable}
       </Button>
     </div>
   );
