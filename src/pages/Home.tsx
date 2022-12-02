@@ -44,6 +44,7 @@ const Home: React.FC<Props> = ({ jobs, workerDetails }) => {
               reportTo={jobDetails.company.reportTo}
               requirements={jobDetails.requirements}
               shifts={jobDetails.shifts}
+              timeZone={jobDetails.company.address.zoneId}
             />
             <Buttons
               workerId={workerDetails.workerId}
