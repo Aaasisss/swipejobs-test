@@ -28,6 +28,8 @@ const Location: React.FC<Props> = ({ formattedAddress, milesToTravel }) => {
         </div>
         <Tooltip label="View on maps">
           <a
+            target={"_blank"}
+            rel="noreferrer"
             className="icon-container"
             href={`https://www.google.com.au/maps/place/${formattedAddress}`}
           >

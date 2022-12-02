@@ -1,7 +1,7 @@
 import { Button } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React from "react";
+import useHandlButtonClick from "../hooks/useHandleButtonClick";
 import "../styles/Buttons.css";
-import { acceptJob, rejectJob } from "../utils/ButtonClickResponses";
 
 interface Props {
   workerId: string;
@@ -11,39 +11,13 @@ interface Props {
   totalJobs: number;
 }
 
-const Buttons: React.FC<Props> = ({
-  workerId,
-  JobId,
-  currentJobIndex,
-  setCurrentJobIndex,
-  totalJobs,
-}) => {
-  const [jobAccepted, setJobAccepted] = useState(false);
-  const [jobRejected, setJobRejected] = useState(false);
-  const [jobAvailable, setJobAvailable] = useState("I'll take it");
-
-  const onAcceptClickHandle = async () => {
-    const response = await acceptJob(workerId, JobId);
-
-    if (response.success) {
-      setJobAccepted(true);
-      setJobRejected(false);
-    } else {
-      setJobAvailable("Not Available");
-    }
-  };
-
-  const onRejectClickHandle = async () => {
-    const nextIndex = currentJobIndex + 1;
-    if (nextIndex < totalJobs) {
-      setCurrentJobIndex(nextIndex);
-    }
-
-    await rejectJob(workerId, JobId).then(() => {
-      setJobAccepted(false);
-      setJobRejected(true);
-    });
-  };
+const Buttons: React.FC<Props> = (props) => {
+  const {
+    onRejectClickHandle,
+    onAcceptClickHandle,
+    jobAccepted,
+    initialMessage,
+  } = useHandlButtonClick(props);
 
   return (
     <div className="button-container">
@@ -52,7 +26,7 @@ const Buttons: React.FC<Props> = ({
         className={"button-reject"}
         onClick={onRejectClickHandle}
       >
-        {jobRejected ? "Rejected" : "No Thanks"}
+        No Thanks
       </Button>
       <Button
         variant={"outlined"}
@@ -60,7 +34,7 @@ const Buttons: React.FC<Props> = ({
         sx={{ backgroundColor: jobAccepted && "#52b818" }}
         onClick={onAcceptClickHandle}
       >
-        {jobAccepted ? "You took this job" : jobAvailable}
+        {initialMessage}
       </Button>
     </div>
   );

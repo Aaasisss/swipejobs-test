@@ -13,6 +13,7 @@ interface Props {
   reportTo: ReportToProps;
   requirements: string[];
   shifts: ShiftsProps[];
+  timeZone: string;
 }
 
 const GeneralInfo: React.FC<Props> = ({
@@ -21,10 +22,11 @@ const GeneralInfo: React.FC<Props> = ({
   reportTo,
   requirements,
   shifts,
+  timeZone,
 }) => {
   return (
     <Stack className="generalInfo-main-container">
-      <ShiftDates shifts={shifts} />
+      <ShiftDates shifts={shifts} timeZone={timeZone} />
       <Location
         formattedAddress={formattedAddress}
         milesToTravel={milesToTravel}

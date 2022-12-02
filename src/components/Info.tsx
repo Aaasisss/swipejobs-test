@@ -1,6 +1,7 @@
 import { Box, Stack, Text } from "@chakra-ui/react";
 import React from "react";
 import "../styles/Info.css";
+import { convertWageToDollar } from "../utils/ConvertWage";
 
 interface Props {
   milesToTravel: number;
@@ -8,7 +9,7 @@ interface Props {
 }
 
 const Info: React.FC<Props> = ({ milesToTravel, wagePerHourInCents }) => {
-  const wagePerHourInDollars = (wagePerHourInCents / 100).toFixed(2);
+  const wagePerHourInDollars = convertWageToDollar(wagePerHourInCents);
   const miles = milesToTravel.toFixed(2);
 
   return (
