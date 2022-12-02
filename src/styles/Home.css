@@ -1,8 +1,6 @@
 .App {
-  border: 1px solid;
   display: flex;
   justify-content: center;
-  border: 1px solid;
 }
 
 .header {
